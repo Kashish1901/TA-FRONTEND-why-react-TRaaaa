@@ -16,3 +16,17 @@ body {
   padding: 10px;
   font-size: 15px;
 }
+
+li {
+  list-style: none;
+  padding: 10px;
+  border-bottom: 1px dashed white;
+  text-align: left;
+  font-size: 22px;
+}
+li button {
+  padding: 2px 5px;
+  margin-left: 10px;
+  background-color: white;
+  border: 1px solid black;
+}

@@ -31,7 +31,14 @@ function handleChange(event) {
 function elm(type, attr = {}, ...children) {
   let element = document.createElement(type);
   for (let key in attr) {
-    element[key] = attr[key];
+    if (key.startsWith("data-")) {
+      element.setAttribute(key, attr[key]);
+    } else if (key.startsWith("on")) {
+      let eventType = key.replace("on", " ").toLowerCase();
+      element.addEventListener(eventType, attr[key]);
+    } else {
+      element[key] = attr[key];
+    }
   }
   children.forEach((child) => {
     if (typeof child === "object") {
@@ -49,19 +56,25 @@ function elm(type, attr = {}, ...children) {
 function createMoviesUI(data, root) {
   rootElm.innerHTML = " ";
   data.forEach((movie, i) => {
+    let button = elm("button", {
+      id: i,
+      onClick: handleChange,
+      innerText: movie.watched ? "Watched " : "To watch",
+    });
     let li = elm(
       "li",
       {},
       elm("label", {
-        "data-id": "i",
-        innerText: " movie.name",
+        id: i,
+        innerText: movie.name,
       }),
-      elm("button", {
-        innerText: `movie.watched ? "Watched " : "To watch"`,
-        "data-id": ` i`,
-      })
+      (button = elm("button", {
+        id: i,
+        onClick: handleChange,
+        innerText: movie.watched ? "Watched " : "To watch",
+      }))
     );
-
+    button.addEventListener("click", handleChange);
     rootElm.append(li);
   });
 }

@@ -15,36 +15,34 @@ input.addEventListener("keyup", (event) => {
   if (event.keyCode === 13) {
     allMovies.push({
       name: event.target.value,
-      watched: true,
+      watched: false,
     });
     event.target.value = " ";
-    createMoviesUI();
+    createMoviesUI(allMovies, rootElm);
   }
 });
 
 function handleChange(event) {
   let id = event.target.id;
   allMovies[id].watched = !allMovies[id].watched;
+  createMoviesUI(allMovies, rootElm);
 }
-function createMoviesUI() {
+function createMoviesUI(data, root) {
   rootElm.innerHTML = " ";
-  allMovies.forEach((movie, i) => {
+  data.forEach((movie, i) => {
     let li = document.createElement("li");
-    let input = document.createElement("input");
-    input.classList.add("styled-checkbox");
-    input.id = i;
-    input.checked = movie.watched;
-    input.value = movie.watched;
-    input.addEventListener("change", handleChange);
-
+    let button = document.createElement("button");
+    button.innerText = movie.watched ? "Watched " : "To watch";
+    button.id = i;
+    button.addEventListener("click", handleChange);
     let label = document.createElement("label");
     label.for = i;
     label.innerText = movie.name;
 
-    li.append(label, input);
+    li.append(label, button);
 
     rootElm.append(li);
   });
 }
 
-createMoviesUI();
+createMoviesUI(allMovies, rootElm);

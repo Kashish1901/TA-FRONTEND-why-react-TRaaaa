@@ -4,6 +4,10 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
 }
+.heading-main {
+  text-align: center;
+  font-size: 32px;
+}
 .container {
   width: 90%;
   margin: 25px 7px;

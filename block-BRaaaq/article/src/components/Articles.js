@@ -25,7 +25,12 @@ function Article(props) {
 }
 
 Article.propTypes = {
-  name: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+  descriptipn: PropTypes.string.isRequired,
+  publishedAt: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
 };
+
 export default Articles;

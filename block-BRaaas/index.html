@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Button Event</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <h1>Handling Events on Button</h1>
+    <div id="root"></div>
+    <script type="text/babel">
+      let root = document.getElementById("root");
+      function First() {
+        return (
+          <button
+            onClick={() => {
+              alert(`Hello React Event`);
+            }}
+          >
+            Click Me!
+          </button>
+        );
+      }
+
+      function Second() {
+        return (
+          <button
+            onClick={() => {
+              alert(`To learn React use https://reactjs.org`);
+              alert(`React and ReactDOM works together`);
+              alert(`Babel helps in writing JSX`);
+            }}
+          >
+            How can I help you?
+          </button>
+        );
+      }
+
+      function Third() {
+        let names = ["Arya", "John", "Bran"];
+        return names.map((name) => (
+          <button
+            onClick={() => {
+              alert(`Hello ${name}`);
+            }}
+          >
+            {name}
+          </button>
+        ));
+      }
+
+      function Forth() {
+        let fruits = [
+          { id: "apple", value: "🍎 apple" },
+          { id: "orange", value: "🍊 orange" },
+          { id: "grape", value: "🍇 grape" },
+          { id: "pear", value: "🍐 pear" },
+        ];
+        return fruits.map((fruit) => (
+          <button
+            key={fruit.id}
+            onClick={() => {
+              alert(fruit.value);
+            }}
+          >
+            {fruit.value}
+          </button>
+        ));
+      }
+      ReactDOM.render(
+        <>
+          <First />
+          <Second />
+          <Third />
+          <Forth />
+        </>,
+        root
+      );
+    </script>
+  </body>
+</html>

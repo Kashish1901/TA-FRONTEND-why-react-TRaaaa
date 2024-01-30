@@ -1,11 +1,23 @@
 import "./App.css";
-import data from "./colors.json";
+import "../../code/colors";
+function App() {
+  return;
+}
 
 function Color() {
-  return console.log(data);
+  return (
+    <div>
+      <div>Aside</div>
+      <ul>
+        <li>
+          <div></div>
+          <div>
+            <span>50</span>
+            <span>#ffff</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  );
 }
-function App() {
-  return { Color };
-}
-
 export default App;
